@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">        <title>Cursor Changer</title>
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" type="text/css" href="./jquery.funnyText.css" />
+	
+	    <style>
+		    .text1, .text2{
+		    	display:block;
+		    	text-align:center;
+	    	}
+		    .text2 span {
+		    	background-color: #DFE2DB;
+	    	}
+		    .text2 span.active {
+		    	background-color: #3B3738;
+		    }
+	    </style>
+	    
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+	    
+	    <script type="text/javascript" src="./jquery.funnyText.js"></script>
+	    <script>var $j = jQuery.noConflict(true);</script>
+	    <script type="text/javascript">
+		    $j(document).ready(function() {
+		    	$j('.text1').funnyText({
+			    	speed: 800,
+			    	activeColor: '#4CAF50',
+			    	color: 'white',
+			    	fontSize: '8em',
+			    	borderColor: 'green'
+		    	});
+			    $j('.text2').funnyText({
+			    	speed: 800,
+			    	fontSize: '7em',
+			    	color: '#191919',
+			    	activeColor: '#fff',
+			    	borderColor: 'black'
+			    });
+		    });
+	    </script>
+    </head>
+    <body>
+		<div class="table">
+	        <div class="tableCell">
+	        	<div class="text1" style="font-family: Calibri">Choose a cursor!</div>
+	        </div>
+        </div>
+        <br>
+        
+        <figure id="mouse-pointer"></figure>
+        <audio id="musicBtn" src="music/banana.mp3"></audio>
+        
+        <div class="btn-group" style="width:100%">
+          <button id="btnHeight" onclick="changeCursor('banana')"><image id="imgHeight" src="gifs/banana.gif"></image></button>
+          <button id="btnHeight" onclick="changeCursor('shark')"><image id="imgHeight" src="gifs/shark.gif"></image></button>
+          <button id="btnHeight" onclick="changeCursor('spongeBob')"><image id="imgHeight" src="gifs/spongeBob.gif"></image></button>
+          <button id="btnHeight" onclick="changeCursor('link')"><image id="imgHeight" src="gifs/link.gif"></image></button>
+          <button id="btnHeight" onclick="changeCursor('fishman')"><image id="imgHeight" src="gifs/fishman.gif"></image></button>
+          <button id="btnHeight" onclick="changeCursor('nyancat')"><image id="imgHeight" src="gifs/nyancat.gif"></image></button>
+          <button id="btnHeight" onclick="changeCursor('batman')"><image id="imgHeight" src="gifs/batman.gif"></image></button>
+          <button id="btnHeight" onclick="changeCursor('hellokitty')"><image id="imgHeight" src="gifs/hellokitty.gif"></image></button>
+          <button id="btnHeight" onclick="changeCursor('mario')"><image id="imgHeight" src="gifs/mario.gif"></image></button>
+          <button id="btnHeight" onclick="changeCursor('minions')"><image id="imgHeight" src="gifs/minions.gif"></image></button>
+          <button id="btnHeight" onclick="changeCursor('pokemon')"><image id="imgHeight" src="gifs/pokemon.gif"></image></button>
+          <button id="btnHeight" onclick="changeCursor('starwars')"><image id="imgHeight" src="gifs/starwars.gif"></image></button>
+          <button id="btnHeight" onclick="changeCursor('adventuretime')"><image id="imgHeight" src="gifs/adventuretime.gif"></image></button>
+          <button id="btnHeight" onclick="changeCursor('harrypotter')"><image id="imgHeight" src="gifs/harrypotter.gif"></image></button>
+          <button id="btnHeight" onclick="changeCursor('arthur')"><image id="imgHeight" src="gifs/arthur.gif"></image></button>
+        </div>
+        
+        <br>
+        <a href="https://github.com/noahap/lab2" target="_blank" class="fa fa-github"></a>
+        <a onclick="pause()" class="fa fa-pause-circle"></a>
+        <a href="./cursorChanger.zip" download="" class="fa fa-download"></a>
+
+        <br>
+        <script>
+            var item;
+            var aud;
+            var isPlaying = false;
+            function changeCursor(item) {
+                var curser = "url('gifs/"+item+".gif')";
+                var newMusic = item+".mp3";
+                console.log(curser);
+                document.getElementById("mouse-pointer").style.backgroundImage = curser;
+                if(isPlaying){
+                    aud.pause();
+                }
+                aud = new Audio('music/'+item+'.mp3');
+                aud.play();
+                isPlaying = true;
+            }
+            
+            function pause(){
+                aud.pause();
+            }
+        </script>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write("<script src='js/jquery-1.10.2.min.js'>\x3C/script>")</script>
+        <script>
+            musicBtn.style.display = "none";
+            $j(function (){
+             $j(window).mousemove(function(event) {
+                $j('#mouse-pointer').css({
+                    'top' : event.pageY + 'px',
+                    'left' : event.pageX + 'px'});
+             });
+            });
+        </script>
+    </body>
+</html>
